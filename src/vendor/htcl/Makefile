@@ -5,6 +5,9 @@ GHC ?= ghc
 %.o: %.c
 	$(GHC) $(GHCFLAGS) -c $<
 
+libhtcl.so:
+	$(GHC) $(GHCFLAGS) --make -dynamic -shared -fPIC haskell.c -o libhtcl.so
+
 libhtcl.a: haskell.o
 	$(AR) -r $@ $(filter %.o, $+)
 
